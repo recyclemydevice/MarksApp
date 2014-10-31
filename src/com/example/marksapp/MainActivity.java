@@ -43,6 +43,7 @@ public class MainActivity extends Activity implements OnClickListener {
 
     public void toNextActivity() {
     	Intent i = new Intent(this, RandomNumber.class);
+    	
     	startActivity(i);
     }
 
