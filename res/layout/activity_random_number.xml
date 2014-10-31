@@ -1,0 +1,139 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.marksapp.RandomNumber" >
+
+    <TextView
+        android:id="@+id/number1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Number1" />
+
+    <Button
+        android:id="@+id/checkanswer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/number1"
+        android:layout_below="@+id/number2"
+        android:layout_marginTop="107dp"
+        android:onClick="onClick"
+        android:text="Submit" />
+
+    <TextView
+        android:id="@+id/number2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/number1"
+        android:layout_below="@+id/number1"
+        android:layout_marginTop="50dp"
+        android:text="Number2" />
+
+    <TextView
+        android:id="@+id/symbol"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/number2"
+        android:layout_below="@+id/number1"
+        android:layout_marginTop="17dp"
+        android:text="+" />
+
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/number2"
+        android:layout_below="@+id/number2"
+        android:layout_marginTop="17dp"
+        android:text="=" />
+
+    <EditText
+        android:id="@+id/answer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView2"
+        android:layout_below="@+id/textView2"
+        android:layout_marginTop="15dp"
+        android:ems="10"
+        android:inputType="number" >
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+id/correctanswers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/checkanswer"
+        android:layout_below="@+id/checkanswer"
+        android:layout_marginTop="33dp"
+        android:text="0" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/correctanswers"
+        android:layout_alignLeft="@+id/correctanswers"
+        android:layout_marginBottom="15dp"
+        android:text="Correct" />
+
+    <TextView
+        android:id="@+id/TextView01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/correctanswers"
+        android:layout_below="@+id/correctanswers"
+        android:layout_marginTop="24dp"
+        android:text="Incorrect" />
+
+    <TextView
+        android:id="@+id/incorrectanswers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/TextView01"
+        android:layout_below="@+id/TextView01"
+        android:text="0" />
+
+    <Chronometer
+        android:id="@+id/chronometer1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/incorrectanswers"
+        android:layout_marginTop="34dp"
+        android:layout_toRightOf="@+id/incorrectanswers"
+        android:text="Chronometer" />
+
+    <TextView
+        android:id="@+id/questionnumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/number1"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="50dp"
+        android:text="1" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/number2"
+        android:layout_alignLeft="@+id/questionnumber"
+        android:layout_marginLeft="17dp"
+        android:text="/" />
+
+    <TextView
+        android:id="@+id/totalquestions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/number2"
+        android:layout_marginLeft="8dp"
+        android:layout_toRightOf="@+id/textView3"
+        android:text="10" />
+
+</RelativeLayout>
