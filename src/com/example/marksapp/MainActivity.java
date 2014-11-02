@@ -1,5 +1,6 @@
 package com.example.marksapp;
 
+import android.R.string;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,7 +18,7 @@ public class MainActivity extends Activity implements OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
       
-        Button b = (Button)findViewById(R.id.startintent);
+        Button b = (Button)findViewById(R.id.btneasy);
         b.setOnClickListener(this);
     }
 
@@ -41,20 +42,25 @@ public class MainActivity extends Activity implements OnClickListener {
         return super.onOptionsItemSelected(item);
     }
 
-    public void toNextActivity() {
+    public void toNextActivity(String level) {
     	
     	// Go to next activity
     	Intent i = new Intent(this, RandomNumber.class);
-    	
+    	i.putExtra("level",level );
     	startActivity(i);
-    	
     }
 
 	@Override
 	public void onClick(View v) {
 		switch(v.getId()) {
-		case R.id.startintent:
-			toNextActivity();
+		case R.id.btneasy:
+			toNextActivity("easy");
+			break;
+		case R.id.btnmedium:
+			toNextActivity("medium");
+			break;
+		case R.id.btnhard:
+			toNextActivity("hard");
 			break;
 		}
 		

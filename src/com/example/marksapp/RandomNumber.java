@@ -26,19 +26,20 @@ public class RandomNumber extends Activity implements OnClickListener {
 	TextView questionnumber;
 	EditText answer;
 	Chronometer timer;
+	TextView levelText;
 	
 	int calculatedAnswer=0;
 	int givenAnswer=0;
 	int correctScore=0;
 	int incorrectScore=0;
-    int totalQuestions=2;
+    int totalQuestions=0;
     int currentQuestion=1;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_random_number);
-		
+
 		btnanswer = (Button)findViewById(R.id.checkanswer);
 		 number1 = (TextView)findViewById(R.id.number1);
 		 number2 = (TextView)findViewById(R.id.number2);
@@ -48,13 +49,49 @@ public class RandomNumber extends Activity implements OnClickListener {
 		 totalquestions = (TextView)findViewById(R.id.totalquestions);
 		 answer =  (EditText)findViewById(R.id.answer);
 		 timer = (Chronometer) findViewById(R.id.chronometer1);
+		 levelText = (TextView)findViewById(R.id.level);
 
-		 number1.setText(String.valueOf(returnGen(10,1)));
-		 number2.setText(String.valueOf(returnGen(10,1)));
+		 determineLevel();
+		 
 		 totalquestions.setText(String.valueOf(totalQuestions));
 		 
+		 Intent intent = getIntent();
+		
+		 levelText.setText(String.valueOf("Level: " + intent.getExtras().getString("level")));
+		 
+		
 		 
 		 btnanswer.setOnClickListener(this);
+	}
+	
+public void determineLevel() {
+		
+		Intent intent = getIntent();
+		String level = intent.getExtras().getString("level");
+		
+		int maxNumber = 10;
+
+		if (level.contains("easy"))
+		{
+			totalQuestions = 10;
+			maxNumber = 10;
+		}
+		if (level.contains("medium"))
+		{
+			totalQuestions = 15;
+			maxNumber = 20;
+		}
+		if (level.contains("hard"))
+		{
+			totalQuestions = 20;
+			maxNumber = 30;
+		}
+
+		 number1.setText(String.valueOf(returnGen(maxNumber,1)));
+		 number2.setText(String.valueOf(returnGen(maxNumber,1)));
+		 
+		 answer.setText("");
+		
 	}
 
 	@Override
@@ -76,6 +113,9 @@ public class RandomNumber extends Activity implements OnClickListener {
 		return super.onOptionsItemSelected(item);
 	}
 	
+	
+	
+	
 	public int returnGen(int maxNumber, int minNumber) {
 		int random = (int )(Math.random() * maxNumber + minNumber);
 		return random;
@@ -95,30 +135,25 @@ public class RandomNumber extends Activity implements OnClickListener {
 	
 				calculatedAnswer= Integer.parseInt(number1.getText().toString()) + Integer.parseInt(number2.getText().toString());
 				givenAnswer=Integer.parseInt(answer.getText().toString());
-			      
-	
+
 				if (calculatedAnswer == givenAnswer)
 				{
 					Toast.makeText(getApplicationContext(), "Correct", Toast.LENGTH_SHORT).show();
-	
-					number1.setText(String.valueOf(returnGen(10,1)));
-					number2.setText(String.valueOf(returnGen(10,1)));
-					answer.setText("");
+
 					correctanswers.setText(String.valueOf(correctScore+=1));
-	
+		
 				}
 				else
 				{
 					Toast.makeText(getApplicationContext(), "Incorrect, answer is " + calculatedAnswer, Toast.LENGTH_SHORT).show();
 	
-					number1.setText(String.valueOf(returnGen(10,1)));
-					number2.setText(String.valueOf(returnGen(10,1)));
-					answer.setText("");
 					incorrectanswers.setText(String.valueOf(incorrectScore+=1));
 				}
 				
 				break;
 			}
+		
+		determineLevel();
 		
 		questionnumber.setText(String.valueOf(currentQuestion+=1));
 		

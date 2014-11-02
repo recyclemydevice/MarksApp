@@ -66,7 +66,7 @@ public class Results extends Activity implements OnClickListener {
 	public void onClick(View v) {
 		switch(v.getId()) {
 		case R.id.btntryagain:
-			Intent i = new Intent(this, RandomNumber.class);
+			Intent i = new Intent(this, MainActivity.class);
 			startActivity(i);
 
 			break;

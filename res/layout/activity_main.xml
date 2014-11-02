@@ -12,15 +12,35 @@
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:text="learning app" />
 
     <Button
-        android:id="@+id/startintent"
+        android:id="@+id/btneasy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView1"
         android:layout_below="@+id/textView1"
         android:onClick="onClick"
-        android:text="Start" />
+        android:text="Easy" />
+
+    <Button
+        android:id="@+id/btnmedium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btneasy"
+        android:layout_below="@+id/btneasy"
+        android:layout_marginTop="16dp"
+        android:onClick="onClick"
+        android:text="Medium" />
+
+    <Button
+        android:id="@+id/btnhard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btnmedium"
+        android:layout_below="@+id/btnmedium"
+        android:layout_marginTop="31dp"
+        android:onClick="onClick"
+        android:text="Hard" />
 
 </RelativeLayout>
