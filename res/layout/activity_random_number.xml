@@ -140,8 +140,18 @@
         android:id="@+id/level"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/questionnumber"
         android:layout_alignParentBottom="true"
-        android:text="easy" />
+        android:layout_alignRight="@+id/totalquestions"
+        android:text="Level: very easy" />
+
+    <Button
+        android:id="@+id/btnmainmenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/level"
+        android:layout_alignBottom="@+id/level"
+        android:layout_alignLeft="@+id/incorrectanswers"
+        android:onClick="onClick"
+        android:text="Main Menu" />
 
 </RelativeLayout>

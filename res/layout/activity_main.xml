@@ -43,4 +43,26 @@
         android:onClick="onClick"
         android:text="Hard" />
 
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btnhard"
+        android:layout_below="@+id/btnhard"
+        android:layout_marginTop="65dp"
+        android:orientation="vertical" >
+
+        <RadioButton
+            android:id="@+id/radioaddition"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="Addition" />
+
+        <RadioButton
+            android:id="@+id/radiosubtract"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Subtraction" />
+    </RadioGroup>
+
 </RelativeLayout>

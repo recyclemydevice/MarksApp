@@ -9,6 +9,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.RadioButton;
+import android.widget.TextView;
 
 
 public class MainActivity extends Activity implements OnClickListener {
@@ -44,9 +46,27 @@ public class MainActivity extends Activity implements OnClickListener {
 
     public void toNextActivity(String level) {
     	
+    	RadioButton radioAddition;
+    	RadioButton radioSubtract;
+    	radioAddition = (RadioButton)findViewById(R.id.radioaddition);
+    	radioSubtract = (RadioButton)findViewById(R.id.radiosubtract);
+    	
+    	boolean add = true;//radioAddition.isChecked();
+    	boolean subtract = radioAddition.isChecked();
+
     	// Go to next activity
     	Intent i = new Intent(this, RandomNumber.class);
     	i.putExtra("level",level );
+    	
+    	if (add)
+    	{    	
+    		i.putExtra("type", "add");
+    	}
+    	else if (subtract)
+    	{    	
+    		i.putExtra("type", "subtract");
+    	}
+
     	startActivity(i);
     }
 

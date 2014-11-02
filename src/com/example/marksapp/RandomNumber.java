@@ -18,7 +18,9 @@ import android.widget.Toast;
 public class RandomNumber extends Activity implements OnClickListener {
 
 	Button btnanswer;
+	Button btnmainmenu;
 	TextView number1;
+	//TextView symbol;
 	TextView number2;
 	TextView correctanswers;
 	TextView incorrectanswers;
@@ -34,6 +36,7 @@ public class RandomNumber extends Activity implements OnClickListener {
 	int incorrectScore=0;
     int totalQuestions=0;
     int currentQuestion=1;
+    //String typeOfSum;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +53,10 @@ public class RandomNumber extends Activity implements OnClickListener {
 		 answer =  (EditText)findViewById(R.id.answer);
 		 timer = (Chronometer) findViewById(R.id.chronometer1);
 		 levelText = (TextView)findViewById(R.id.level);
+		 //symbol = (TextView)findViewById(R.id.symbol);
+		 
+		 btnmainmenu = (Button)findViewById(R.id.btnmainmenu);
+		 
 
 		 determineLevel();
 		 
@@ -59,7 +66,19 @@ public class RandomNumber extends Activity implements OnClickListener {
 		
 		 levelText.setText(String.valueOf("Level: " + intent.getExtras().getString("level")));
 		 
-		
+		 /*
+		 typeOfSum = intent.getExtras().getString("type");
+		 
+		 if (typeOfSum.contains("add"))
+			{
+			 symbol.setText(String.valueOf("+"));
+			 
+			}
+			else if (typeOfSum.contains("subtract"))
+			{
+				symbol.setText(String.valueOf("-"));
+			}
+			*/
 		 
 		 btnanswer.setOnClickListener(this);
 	}
@@ -112,10 +131,7 @@ public void determineLevel() {
 		}
 		return super.onOptionsItemSelected(item);
 	}
-	
-	
-	
-	
+
 	public int returnGen(int maxNumber, int minNumber) {
 		int random = (int )(Math.random() * maxNumber + minNumber);
 		return random;
@@ -134,6 +150,17 @@ public void determineLevel() {
 			case R.id.checkanswer:
 	
 				calculatedAnswer= Integer.parseInt(number1.getText().toString()) + Integer.parseInt(number2.getText().toString());
+				/*
+				if (typeOfSum == "add")
+				{
+				
+				}
+				else if (typeOfSum == "subtract")
+				{
+					calculatedAnswer= Integer.parseInt(number1.getText().toString()) - Integer.parseInt(number2.getText().toString());
+				}*/
+				
+				
 				givenAnswer=Integer.parseInt(answer.getText().toString());
 
 				if (calculatedAnswer == givenAnswer)
@@ -150,30 +177,38 @@ public void determineLevel() {
 					incorrectanswers.setText(String.valueOf(incorrectScore+=1));
 				}
 				
+				determineLevel();
+				
+				questionnumber.setText(String.valueOf(currentQuestion+=1));
+				
+				if (Integer.parseInt(questionnumber.getText().toString()) == totalQuestions + 1)
+				{
+					questionnumber.setText(String.valueOf(currentQuestion-=1));
+					
+					Toast.makeText(getApplicationContext(), "Finished", Toast.LENGTH_SHORT).show();
+					
+					timer.stop();
+					
+					String[] results = new String[]{correctanswers.getText().toString(), 
+							incorrectanswers.getText().toString(), 
+							timer.getText().toString(),totalquestions.getText().toString() };
+
+					Intent i = new Intent(this, Results.class);
+					i.putExtra("Results",results );
+					
+					startActivity(i);
+				}
+				
+				
+				break;
+				
+			case R.id.btnmainmenu:
+				Intent i = new Intent(this, MainActivity.class);
+				startActivity(i);
 				break;
 			}
 		
-		determineLevel();
 		
-		questionnumber.setText(String.valueOf(currentQuestion+=1));
-		
-		if (Integer.parseInt(questionnumber.getText().toString()) == totalQuestions + 1)
-		{
-			questionnumber.setText(String.valueOf(currentQuestion-=1));
-			
-			Toast.makeText(getApplicationContext(), "Finished", Toast.LENGTH_SHORT).show();
-			
-			timer.stop();
-			
-			String[] results = new String[]{correctanswers.getText().toString(), 
-					incorrectanswers.getText().toString(), 
-					timer.getText().toString(),totalquestions.getText().toString() };
-
-			Intent i = new Intent(this, Results.class);
-			i.putExtra("Results",results );
-			
-			startActivity(i);
-		}
 
 	}
 }
