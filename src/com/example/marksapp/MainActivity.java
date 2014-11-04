@@ -83,6 +83,11 @@ public class MainActivity extends Activity implements OnClickListener {
 		case R.id.btnhard:
 			toNextActivity("hard");
 			break;
+		case R.id.btndbtest:
+			// Go to next activity
+			Intent i = new Intent(this, Comments.class);
+	    	startActivity(i);
+			break;
 		}
 		
 	}
