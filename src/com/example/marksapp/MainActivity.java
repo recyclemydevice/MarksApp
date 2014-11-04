@@ -44,6 +44,7 @@ public class MainActivity extends Activity implements OnClickListener {
         return super.onOptionsItemSelected(item);
     }
 
+    // Goes to next activity
     public void toNextActivity(String level) {
     	
     	RadioButton radioAddition;
