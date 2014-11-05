@@ -6,7 +6,9 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.marksapp.MainActivity" >
+    tools:context="com.example.marksapp.MainActivity"
+    android:background="@drawable/bg"
+     >
 
     <TextView
         android:id="@+id/textView1"
@@ -33,45 +35,56 @@
         android:onClick="onClick"
         android:text="Medium" />
 
-    <Button
-        android:id="@+id/btnhard"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/btnmedium"
-        android:layout_below="@+id/btnmedium"
-        android:layout_marginTop="31dp"
-        android:onClick="onClick"
-        android:text="Hard" />
-
     <RadioGroup
+        android:id="@+id/radioGroup1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/btnhard"
         android:layout_below="@+id/btnhard"
         android:layout_marginTop="65dp"
         android:orientation="vertical" >
-
-        <RadioButton
-            android:id="@+id/radioaddition"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            android:text="Addition" />
-
-        <RadioButton
-            android:id="@+id/radiosubtract"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Subtraction" />
     </RadioGroup>
 
     <Button
         android:id="@+id/btndbtest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/radioGroup1"
         android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/textView1"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/greenbutton"
         android:onClick="onClick"
-        android:text="Test DB" />
+        android:text="Test DB"
+        android:textColor="@color/white" />
+
+    <RadioButton
+        android:id="@+id/radiosubtract"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btndbtest"
+        android:layout_alignLeft="@+id/btndbtest"
+        android:layout_alignRight="@+id/btndbtest"
+        android:layout_marginBottom="15dp"
+        android:text="Subtraction" />
+
+    <RadioButton
+        android:id="@+id/radioaddition"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/radiosubtract"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:checked="true"
+        android:text="Addition" />
+
+    <Button
+        android:id="@+id/btnhard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/btnmedium"
+        android:layout_marginTop="36dp"
+        android:onClick="onClick"
+        android:text="Hard" />
 
 </RelativeLayout>

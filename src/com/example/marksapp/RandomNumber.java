@@ -129,6 +129,12 @@ public void determineLevel() {
 		if (id == R.id.action_settings) {
 			return true;
 		}
+		
+		if (id == R.id.mainmenu) {
+			Intent i = new Intent(this, MainActivity.class);
+			startActivity(i);
+		}
+		
 		return super.onOptionsItemSelected(item);
 	}
 
